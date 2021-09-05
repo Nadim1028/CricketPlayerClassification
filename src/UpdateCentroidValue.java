@@ -12,8 +12,6 @@ public class UpdateCentroidValue {
         return tSum;
     }
 
-
-
     public ArrayList<String> averageCalculator(double[] tSum, int counter, ArrayList<String> randomListValue)
     {
         double[] avg=new double[4];

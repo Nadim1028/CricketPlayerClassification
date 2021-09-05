@@ -30,13 +30,13 @@ public class InputTakingClass {
             playerList.add(string);
         }
 
-        selectedInputDataList[0] = new ArrayList<>(List.of("Name","Average", "SR","AvgPerMatch","AvgOf50"));
+        selectedInputDataList[0] = new ArrayList<>(List.of("Name","Average", "StrikeRate","AveragePerInnings","PercentageOfScoring50"));
 
         for (int j = 1; j < playerList.size(); j++){
             arrOfStr = playerList.get(j).split(",", 14);
 
-            if(arrOfStr[3].equals("-"))
-                arrOfStr[3]= String.valueOf(0);
+            if(arrOfStr[4].equals("-"))
+                arrOfStr[4]= String.valueOf(0);
 
             if(arrOfStr[6].equals("-"))
                 arrOfStr[6]= String.valueOf(0);
@@ -55,18 +55,18 @@ public class InputTakingClass {
             selectedInputDataList[j].add(arrOfStr[8]);
             selectedInputDataList[j].add(arrOfStr[10]);
 
-            double runs = Integer.parseInt(arrOfStr[6]), matches = Integer.parseInt(arrOfStr[3]), numberOf50 = Integer.parseInt(arrOfStr[12]);
-            double avgPerMatch = runs / matches;
-            double avgOf50PerMatch;
+            double runs = Integer.parseInt(arrOfStr[6]), innings = Integer.parseInt(arrOfStr[4]), numberOf50 = Integer.parseInt(arrOfStr[12]);
+            double avgPerInnings = runs / innings;
+            double percentageOfScoring50;
             if(numberOf50==0){
-                avgOf50PerMatch = 0;
+                percentageOfScoring50 = 0;
             }
             else{
-                avgOf50PerMatch = (numberOf50/matches)*100 ;
+                percentageOfScoring50 = (numberOf50/innings)*100 ;
             }
-            String avgMatchResult = String.format("%.3f", avgPerMatch);
+            String avgMatchResult = String.format("%.3f", avgPerInnings);
             selectedInputDataList[j].add(avgMatchResult);
-            String avg50Result = String.format("%.5f", avgOf50PerMatch);
+            String avg50Result = String.format("%.5f", percentageOfScoring50);
             selectedInputDataList[j].add(avg50Result);
         }
 

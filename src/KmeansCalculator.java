@@ -49,6 +49,7 @@ public class KmeansCalculator {
             category2Batsman.clear();
             category3Batsman.clear();
             category4Batsman.clear();
+
             for(int j=1; j<selectedInputDataList.length;j++){
                 double minDistance = getMin(
                         euclideanDistanceCalculator(randomList[1],selectedInputDataList[j]),
@@ -132,10 +133,10 @@ public class KmeansCalculator {
 
     public void printOutput(int checker){
         System.out.println("NumberOfLoopRotation = "+checker);
-        System.out.println("Category1Length = "+ category1Batsman.size());
-        System.out.println("Category2Length = "+ category2Batsman.size());
-        System.out.println("Category3Length = "+ category3Batsman.size());
-        System.out.println("Category4Length = "+ category4Batsman.size()+"\n");
+        System.out.println("Number of Data Point in Category1 = "+ category1Batsman.size());
+        System.out.println("Number of Data Point in Category2 = "+ category2Batsman.size());
+        System.out.println("Number of Data Point in Category3 = "+ category3Batsman.size());
+        System.out.println("Number of Data Point in Category4 = "+ category4Batsman.size()+"\n");
 
         for(ArrayList<String> s:randomList2 ){
             System.out.println("RandomPlayerInfo: "+s);
@@ -197,12 +198,12 @@ public class KmeansCalculator {
 
     public double euclideanDistanceCalculator(ArrayList<String> randomData, ArrayList<String> selectedData)
     {
-        double d=0;
-        d= Math.sqrt(  squareOfDifference(Double.parseDouble(randomData.get(1)),Double.parseDouble(selectedData.get(1))) +
+        double distance=0;
+        distance= Math.sqrt(  squareOfDifference(Double.parseDouble(randomData.get(1)),Double.parseDouble(selectedData.get(1))) +
                 squareOfDifference(Double.parseDouble(randomData.get(2)),Double.parseDouble(selectedData.get(2)))
                 + squareOfDifference(Double.parseDouble(randomData.get(3)),Double.parseDouble(selectedData.get(3))) +
                         squareOfDifference(Double.parseDouble(randomData.get(4)),Double.parseDouble(selectedData.get(4))));
-        return  d;
+        return  distance;
     }
 
     public double squareOfDifference( double x, double y)
